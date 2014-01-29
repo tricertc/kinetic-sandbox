@@ -1,0 +1,17 @@
+{
+  "name": "shape-demo",
+  "version": "0.0.1",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kineticjs": "~5.0.1"
+  }
+}
