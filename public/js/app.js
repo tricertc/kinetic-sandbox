@@ -58,7 +58,15 @@
    */
   function drawBlock(stage, blocksize) {
     var layer = new Kinetic.Layer()
+      , bounds
       , block;
+
+    bounds = {
+      top: 0,
+      right: stage.width() - blocksize,
+      bottom: stage.height() - blocksize,
+      left: 0
+    };
 
     block = new Kinetic.Rect({
       x: 0,
@@ -67,7 +75,21 @@
       width: blocksize,
       fill: 'red',
       draggable: true,
-      opacity: 0.4
+      opacity: 0.4,
+      dragBoundFunc: function (pos) {
+        var x = pos.x
+          , y = pos.y;
+
+        if (x < bounds.left) x = bounds.left;
+        if (x > bounds.right) x = bounds.right;
+        if (y < bounds.top) y = bounds.top;
+        if (y > bounds.bottom) y = bounds.bottom;
+
+        return {
+          x: x,
+          y: y
+        }
+      }
     });
 
     layer.add(block);
