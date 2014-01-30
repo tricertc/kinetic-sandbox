@@ -92,6 +92,26 @@
       }
     });
 
+    block.on('dragend', function () {
+      var blockX = this.x()
+        , blockY = this.y()
+        , x
+        , y;
+
+      x = blockX % blocksize < blocksize / 2
+        ? blockX - (blockX % blocksize)
+        : blockX + (blocksize - (blockX % blocksize));
+
+      y = blockY % blocksize < blocksize / 2
+        ? blockY - (blockY % blocksize)
+        : blockY + (blocksize - (blockY % blocksize));
+
+      this.x(x);
+      this.y(y);
+
+      layer.draw();
+    });
+
     layer.add(block);
     stage.add(layer);
   }
